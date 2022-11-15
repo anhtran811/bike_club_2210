@@ -72,28 +72,17 @@ RSpec.describe Biker do
     expect(biker2.personal_record(ride2)).to eq(false)
   end
 
+  it 'can update personal record if ride is completed and requirements are met' do
+    biker2.learn_terrain!(:gravel)
+    biker2.learn_terrain!(:hills)
+
+    biker2.log_ride(ride1, 95.0)
+    biker2.log_ride(ride2, 65.0)
+
+    expect(biker2.rides).to eq({
+      ride2 => [65.0]
+    })
+    expect(biker2.personal_record(ride2)).to eq(65.0)
+    expect(biker2.personal_record(ride1)).to eq(false)
+  end
 end
-
-# biker2.log_ride(ride1, 97.0) #biker2 doesn't know this terrain yet
-
-# biker2.log_ride(ride2, 67.0) #biker2 doesn't know this terrain yet
-
-# biker2.rides
-# => {}
-
-# biker2.learn_terrain!(:gravel)
-
-# biker2.learn_terrain!(:hills)
-
-# biker2.log_ride(ride1, 95.0) # biker2 can't bike this distance
-
-# biker2.log_ride(ride2, 65.0) # biker2 knows this terrain and can bike this distance
-
-# biker2.rides
-#=> { #<Ride:0x00007fc62cb42ba8...> => [65.0] }
-
-# biker2.personal_record(ride2)
-#=> 65.0
-
-# biker2.personal_record(ride1)
-#=> false
