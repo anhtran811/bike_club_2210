@@ -19,7 +19,7 @@ class BikeClub
 
   def fastest_biker
     @bikers.min_by do |biker|
-      biker.fastest_time
+      biker.personal_record(biker)
     end
   end
 end

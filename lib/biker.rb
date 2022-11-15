@@ -37,12 +37,5 @@ class Biker
     end
     total
   end
-
-  def fastest_time
-    @rides.map do |ride, time|
-      @rides[ride].min
-    end
-  end
-
 end
 
