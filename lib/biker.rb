@@ -26,7 +26,8 @@ class Biker
   end
 
   def personal_record(ride)
-    @rides[ride].min
+    return false if @rides[ride].nil?
+      @rides[ride].min
   end
 
 end
