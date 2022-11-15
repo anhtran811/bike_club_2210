@@ -16,7 +16,7 @@ class Biker
   end
 
   def log_ride(ride, times)
-    if ride.total_distance < @max_distance && @acceptable_terrain.include?(ride.terrain)
+    if eligible?(ride)
       if @rides[ride].nil? 
         @rides[ride] = [times]
       else
@@ -37,5 +37,11 @@ class Biker
     end
     total
   end
+
+  def eligible?(ride)
+    return true if ride.total_distance < @max_distance && @acceptable_terrain.include?(ride.terrain)
+    false
+  end
+  
 end
 
