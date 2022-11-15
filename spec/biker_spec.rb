@@ -3,9 +3,11 @@ require './lib/biker'
 
 RSpec.describe Biker do
   let!(:biker) {Biker.new("Kenny", 30)}
+  let!(:biker2) {Biker.new("Athena", 15)}
   let!(:ride1) {Ride.new({name: "Walnut Creek Trail", distance: 10.7, loop: false, terrain: :hills})}
   let!(:ride2) {Ride.new({name: "Town Lake", distance: 14.9, loop: true, terrain: :gravel})}
   let!(:ride3) {Ride.new({name: "Coconut Lake", distance: 32, loop: true, terrain: :gravel})}
+
 
   it 'exists and has attributes' do
     expect(biker).to be_a(Biker)
@@ -61,17 +63,16 @@ RSpec.describe Biker do
     expect(biker.personal_record(ride2)).to eq(60.9)
   end
 
+  it 'will return personal record as false if the biker has not completed the ride' do
+    biker2.log_ride(ride1, 97.0)
+    biker2.log_ride(ride2, 67.0) 
+
+    expect(biker2.rides).to eq({})
+    expect(biker2.personal_record(ride1)).to eq(false)
+    expect(biker2.personal_record(ride2)).to eq(false)
+  end
+
 end
-
-
-# # biker.personal_record(ride1)
-# => 91.1
-
-# # biker.personal_record(ride2)
-# => 60.9
-
-# # biker2 = Biker.new("Athena", 15)
-# => #<Biker:0x00007fc62cb399e0...>
 
 # biker2.log_ride(ride1, 97.0) #biker2 doesn't know this terrain yet
 
