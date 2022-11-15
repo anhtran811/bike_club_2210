@@ -4,7 +4,7 @@ require './lib/biker'
 RSpec.describe Biker do
   let!(:biker) {Biker.new("Kenny", 30)}
   let!(:ride1) {Ride.new({name: "Walnut Creek Trail", distance: 10.7, loop: false, terrain: :hills})}
-  let!(:ride1) {Ride.new({name: "Town Lake", distance: 14.9, loop: true, terrain: :gravel})}
+  let!(:ride2) {Ride.new({name: "Town Lake", distance: 14.9, loop: true, terrain: :gravel})}
 
   it 'exists and has attributes' do
     expect(biker).to be_a(Biker)
@@ -31,7 +31,7 @@ RSpec.describe Biker do
     biker.log_ride(ride2, 61.6)
 
     expect(biker.rides).to eq({
-      ride1 => [92.5, 91.1]
+      ride1 => [92.5, 91.1],
       ride2 => [60.9, 61.6]
     })
   end
