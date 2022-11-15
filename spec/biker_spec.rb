@@ -117,6 +117,6 @@ RSpec.describe Biker do
     
     biker2.log_ride(ride2, 65.0)
 
-    expect(biker.fastest_time)to.eq([60.9])
+    expect(biker.fastest_time).to eq([60.9])
   end
 end
