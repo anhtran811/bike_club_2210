@@ -22,4 +22,13 @@ class BikeClub
       biker.personal_record(biker)
     end
   end
+
+  def is_eligible?(biker)
+    @bikers.find_all do |biker|
+      biker.eligible?(biker)
+      # do |ride, times|
+      #   ride.eligible?(biker)
+      # end
+    end
+  end 
 end
