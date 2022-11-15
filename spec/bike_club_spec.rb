@@ -19,7 +19,7 @@ RSpec.describe BikeClub do
   it 'can add bikers' do
     bike_club.add_bikers(biker)
     bike_club.add_bikers(biker2)
-    
-    expect(bike_club.bikers).to eq([])
+
+    expect(bike_club.bikers).to eq([biker, biker2])
   end
 end
