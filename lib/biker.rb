@@ -42,6 +42,4 @@ class Biker
     return true if ride.total_distance < @max_distance && @acceptable_terrain.include?(ride.terrain)
     false
   end
-  
 end
-

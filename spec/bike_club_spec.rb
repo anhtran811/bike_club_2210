@@ -61,4 +61,20 @@ RSpec.describe BikeClub do
 
     expect(bike_club.fastest_biker).to eq(biker)
   end
+
+  it 'can determine if a biker is eligible for a specific ride' do
+    bike_club.add_bikers(biker)
+    bike_club.add_bikers(biker2)
+
+    biker.learn_terrain!(:gravel)
+    biker.learn_terrain!(:hills)
+
+    biker.log_ride(ride2, 60.9)
+    biker.log_ride(ride2, 61.6)
+
+    biker2.log_ride(ride2, 65.0)
+
+    expect(bike_club.is_eligible?(biker)).to be(true)
+    expect(bike_club.is_eligible?(biker2)).to be(false)
+  end
 end
