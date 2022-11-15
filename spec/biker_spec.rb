@@ -104,4 +104,20 @@ RSpec.describe Biker do
     expect(biker.total_logged_rides).to eq(4)
     expect(biker2.total_logged_rides).to eq(1)
   end
+
+  it 'can determine which biker is eligible for a given ride' do
+    biker.learn_terrain!(:gravel)
+    biker.learn_terrain!(:hills)
+
+    biker.log_ride(ride1, 92.5)
+    biker.log_ride(ride1, 91.1)
+    biker.log_ride(ride2, 60.9)
+    biker.log_ride(ride2, 61.6)
+
+    biker2.log_ride(ride1, 97.0)
+
+    expect(biker.eligible?(ride1)).to be(true)
+    expect(biker.eligible?(ride2)).to be(true)
+    expect(biker2.eligible?(ride1)).to be(false)
+  end
 end
