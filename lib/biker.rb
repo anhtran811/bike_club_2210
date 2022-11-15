@@ -15,11 +15,17 @@ class Biker
     @acceptable_terrain << terrain
   end
 
-  def log_ride(ride, time)
-    if @rides[ride].nil? 
-      @rides[ride] = [time]
-    else
-      @rides[ride] << time
+  def log_ride(ride, times)
+    if ride.distance < @max_distance && @acceptable_terrain.include?(ride.terrain)
+      if @rides[ride].nil? 
+        @rides[ride] = [times]
+      else
+        @rides[ride] << times
+      end
     end
   end
+
+  #will not ride if terrain doesn't match
+  # will not ride distance is > max distance
 end
+
