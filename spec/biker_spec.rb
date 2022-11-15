@@ -86,7 +86,7 @@ RSpec.describe Biker do
     expect(biker2.personal_record(ride1)).to eq(false)
   end
 
-  it 'can calculate the total times a biker as logged a ride' do 
+  it 'can calculate the total times a biker has logged a ride' do 
     biker.learn_terrain!(:gravel)
     biker.learn_terrain!(:hills)
 
@@ -103,5 +103,20 @@ RSpec.describe Biker do
 
     expect(biker.total_logged_rides).to eq(4)
     expect(biker2.total_logged_rides).to eq(1)
+  end
+
+  it 'can calculate the fastet time a biker has logged for a specific ride' do
+    biker.learn_terrain!(:gravel)
+    biker.learn_terrain!(:hills)
+
+    biker.log_ride(ride2, 60.9)
+    biker.log_ride(ride2, 61.6)
+  
+    biker2.learn_terrain!(:gravel)
+    biker2.learn_terrain!(:hills)
+    
+    biker2.log_ride(ride2, 65.0)
+
+    expect(biker.fastest_time)to.eq([60.9])
   end
 end
