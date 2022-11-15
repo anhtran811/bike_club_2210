@@ -26,8 +26,7 @@ class Biker
   end
 
   def personal_record(ride)
-    @rides
-    require 'pry'; binding.pry
+    @rides[ride].min
   end
 
 end
