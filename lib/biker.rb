@@ -25,7 +25,10 @@ class Biker
     end
   end
 
-  #will not ride if terrain doesn't match
-  # will not ride distance is > max distance
+  def personal_record(ride)
+    @rides
+    require 'pry'; binding.pry
+  end
+
 end
 
