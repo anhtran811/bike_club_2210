@@ -16,4 +16,10 @@ class BikeClub
       biker.total_logged_rides
     end
   end
+
+  def fastest_biker
+    @bikers.min_by do |biker|
+      biker.fastest_time
+    end
+  end
 end
